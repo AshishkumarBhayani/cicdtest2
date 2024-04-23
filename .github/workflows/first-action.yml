@@ -1,0 +1,10 @@
+name: First name 
+on: first-action
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print
+      - run: echo "helo"
+      - name: bye
+      - run: echo "bye"
