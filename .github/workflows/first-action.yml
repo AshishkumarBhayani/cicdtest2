@@ -1,13 +1,17 @@
 name: First Workflow
-on: workflow_dispatch
+
+on:
+  push:
+    branches: ["workflow"]
+
 jobs:
   first-job:
     runs-on: ubuntu-latest
     steps:
       - name: Print greeting
         run: |
-            echo "Hello World!1"
-            echo "Hello World!2"
-            ls
+          echo "Hello World!1"
+          echo "Hello World!2"
+          ls
       - name: Print goodbye
         run: echo "Done - bye!"
