@@ -4,5 +4,5 @@ jobs:
   info:
     runs-on: ubuntu-latest
     steps:
-      - name: Output github information
+      - name: Output github context dsf
         run: echo "${{toJson(github)}}"
