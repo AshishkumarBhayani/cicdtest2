@@ -27,9 +27,10 @@
 name: push actions
 
 on:
-  push:
-    branches: ["workflow"]
-  workflow_dispatch:
+  [push, workflow_dispatch]
+  # push:
+  #   branches: ["workflow"]
+  # workflow_dispatch:
 
 jobs:
   test:
