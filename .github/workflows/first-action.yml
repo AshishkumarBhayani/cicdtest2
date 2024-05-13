@@ -1,13 +1,62 @@
-name: First Workflow
-on: workflow_dispatch
+# name: First Workflow checking
+
+# on:
+#   push:
+#     branches: ["workflow"]
+
+# jobs:
+#   first-job:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Print greeting
+#         run: |
+#           echo "Hello World!1"
+#           echo "Hello World!3"
+#       - name: Print goodbye
+#         run: echo "Done - bye!"
+#   Second-job:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Print greeting
+#         run: |
+#           echo "Hello World!4"
+#           echo "Hello World!5"
+#       - name: Print goodbye
+#         run: echo "Done - bye!"
+
+name: push actions
+
+on:
+  [workflow_dispatch]
+  # push:
+  #   branches: ["workflow"]
+  # workflow_dispatch:
+
 jobs:
-  first-job:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Print greeting
-        run: |
-            echo "Hello World!1"
-            echo "Hello World!2"
-            ls
-      - name: Print goodbye
-        run: echo "Done - bye!"
+      - name: get code
+        uses: actions/checkout@v3
+      - name: Install node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - name: Install dependencies
+        run: npm install
+      - name: Run tests
+        run: npm run test
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: get code
+        uses: actions/checkout@v3
+      - name: Install node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - name: Install dependencies
+        run: npm install
+      - name: deploy
+        run: npm run build
