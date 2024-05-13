@@ -1,7 +1,7 @@
 name: Output information
 on: [issues]
 jobs:
-  info:
+  info1:
     runs-on: ubuntu-latest
     steps:
       - name: Output github context
