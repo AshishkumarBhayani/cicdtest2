@@ -1,0 +1,12 @@
+name: pullOPen
+on:
+  pull_request:
+    types:
+      - opened
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull request action flow
+        run: echo "${{toJson(github)}}"
